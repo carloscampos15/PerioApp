@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
 
 function Home(){
@@ -17,18 +18,21 @@ export default function HomeScreen({ navigation }) {
       <Stack.Navigator>
         <Stack.Screen 
           name="Home" 
-          component={Home} 
+          component={Home}
           options={{
             title: 'Home',
-            // headerLeft: () => (
-            //   <TouchableOpacity 
-            //     activeOpacity={0.5}>
-            //     <Image
-            //       source={require('./../assets/images/menu.png')}
-            //       style= {styles.MenuStyle}
-            //     />
-            //   </TouchableOpacity>
-            // ),
+            headerLeft: () => (
+              <TouchableOpacity 
+                style= {styles.MenuStyle}
+                onPress={() => navigation.toggleDrawer()}
+                hitSlop={{top: 20, bottom: 20, left: 50, right: 50}}>
+                <Icon
+                  name='bars'
+                  type='font-awesome'
+                  color='#FFFFFF'
+                />
+              </TouchableOpacity>
+            ),
             headerStyle: {
               backgroundColor: '#0069a3',
             },
@@ -36,6 +40,7 @@ export default function HomeScreen({ navigation }) {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
+            headerTitleAlign: 'center'
           }}/>
       </Stack.Navigator>
   );
@@ -43,8 +48,6 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   MenuStyle: {
-    width: 33,
-    height: 33,
-    margin: 20,
+    margin: 20
   },
 });

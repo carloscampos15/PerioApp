@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, View,Text } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
 
 function About(){
@@ -20,6 +21,18 @@ export default function AboutScreen({ navigation }) {
           component={About}
           options={{
             title: 'About',
+            headerLeft: () => (
+              <TouchableOpacity 
+                style= {styles.MenuStyle}
+                onPress={() => navigation.toggleDrawer()}
+                hitSlop={{top: 20, bottom: 20, left: 50, right: 50}}>
+                <Icon
+                  name='bars'
+                  type='font-awesome'
+                  color='#FFFFFF'
+                />
+              </TouchableOpacity>
+            ),
             headerStyle: {
               backgroundColor: '#0069a3',
             },
@@ -27,7 +40,14 @@ export default function AboutScreen({ navigation }) {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
+            headerTitleAlign: 'center'
           }}/>
       </Stack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  MenuStyle: {
+    margin: 20
+  },
+});
