@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Icon, Input } from 'react-native-elements'
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements'
+import TextInput from 'react-native-textinput-with-icons'
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -15,11 +16,33 @@ export default function LoginScreen(){
                 </View>
                 <View style={styles.ContainerForm}>
 
-                    <Input
-                        placeholder='Nombre'
-                        leftIcon = {{ name: 'user', type: 'font-awesome', color:'#000000', marginRight: 10, marginLeft: -12 }}
-                        inputContainerStyle = {{ borderColor: '#9b9b9b' }}
+                <View style={{marginTop:25, alignItems: 'center'}}>
+                    <TextInput
+                        label="Nombre de usuario"
+                        leftIcon="user"
+                        leftIconType="awesome"
+                        containerMaxWidth='90%'
+                        labelActiveColor='#06a2f8'
+                        underlineActiveColor='#06a2f8'
                     />
+                    <TextInput
+                        label="Email"
+                        leftIcon="envelope"
+                        leftIconType="awesome"
+                        containerMaxWidth='90%'
+                        labelActiveColor='#06a2f8'
+                        underlineActiveColor='#06a2f8'
+                    />
+                </View>
+                
+                <View style={{marginTop:10}}>
+                    <TouchableOpacity>
+                        <Text style = {styles.text}>
+                        INICIAR
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
 
                 </View>
             </View>
@@ -69,5 +92,11 @@ const styles = StyleSheet.create({
         height: '30%',
         borderRadius: 12,
         padding: 10
-    }
+    },
+    text: {
+        padding: 10,
+        color: "#fed501",
+        fontWeight: 'bold',
+        fontSize:18
+     }
 });
